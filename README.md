@@ -32,16 +32,36 @@ pip install -e .
 
 After install, a `be-rcon` command is on `PATH`.
 
-```bash
-# one-shot command
-be-rcon cmd <host> <port> <password> players
+### One-shot command
 
-# interactive shell
-be-rcon shell <host> <port> <password>
+```bash
+$ be-rcon cmd 10.0.0.5 2305 'rconpassword' players
+Players on server:
+[#] [IP Address]:[Port] [Ping] [GUID] [Name]
+--------------------------------------------------
+0   10.20.30.40:2304    52   abc...  Bushy
+(1 players in total)
 ```
 
-The interactive shell supports line editing and history (via
-`readline`). Type `exit`, `quit`, or Ctrl-D to leave.
+### Interactive shell
+
+```bash
+$ be-rcon shell 10.0.0.5 2305 'rconpassword'
+Connected to 10.0.0.5:2305. Type 'exit' or Ctrl-D to quit.
+rcon> players
+Players on server:
+[#] [IP Address]:[Port] [Ping] [GUID] [Name]
+--------------------------------------------------
+0   10.20.30.40:2304    52   abc...  Bushy
+(1 players in total)
+rcon> say -1 Server restarting in 5 minutes
+rcon> #shutdown 300
+rcon> exit
+$
+```
+
+Line editing and command history are provided by `readline`. Type
+`exit`, `quit`, or Ctrl-D to leave the shell.
 
 > **Security note.** Passing the RCon password as a positional CLI
 > argument leaves it in shell history and `ps` output. For long-lived
