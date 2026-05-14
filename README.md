@@ -93,9 +93,7 @@ with RConClient("server.example.com", 2305, "rconpassword") as rc:
 
 ## Status
 
-Battle-tested in production on a live DayZ server. This repo is a
-one-way mirror of an internal module: issues and PRs are welcome but
-are re-applied upstream by hand rather than merged directly.
+Battle-tested in production on a live DayZ server.
 
 ## License
 
