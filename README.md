@@ -1,6 +1,6 @@
 # be-rcon
 
-**v2.12.5**
+**v2.12.6**
 
 Unofficial Python client for the [BattlEye RCon
 protocol](https://www.battleye.com/downloads/BERConProtocol.txt) over
@@ -17,7 +17,7 @@ and Arma server administration.
 No PyPI release yet, so install directly from the tagged GitHub archive:
 
 ```bash
-pip install https://github.com/bearmeister/be-rcon/archive/refs/tags/v2.12.5.zip
+pip install https://github.com/bearmeister/be-rcon/archive/refs/tags/v2.12.6.zip
 ```
 
 Works on any environment with `pip` and Python 3.10+; no `git` binary
@@ -26,7 +26,7 @@ required.
 If you already have `git` installed:
 
 ```bash
-pip install git+https://github.com/bearmeister/be-rcon@v2.12.5
+pip install git+https://github.com/bearmeister/be-rcon@v2.12.6
 ```
 
 Or from a local clone:
@@ -70,7 +70,7 @@ $
 ```
 
 Line editing and command history are provided by `readline`. Type
-`exit`, `quit`, or Ctrl-D to leave the shell.
+`exit`, `quit` or Ctrl-D to leave the shell.
 
 > **Security note.** Passing the RCon password as a positional CLI
 > argument leaves it in shell history and `ps` output. For long-lived

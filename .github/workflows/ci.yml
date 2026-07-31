@@ -1,5 +1,5 @@
 # Author:   Bushy <contact@bushy.dev>
-# Version:  v2.12.5
+# Version:  v2.12.6
 # Modified: 2026-05-14
 #
 # ci.yml: run pytest on push and pull request across supported Python versions.

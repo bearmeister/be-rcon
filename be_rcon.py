@@ -1,6 +1,6 @@
 # Author:   Bushy <contact@bushy.dev>
-# Version:  v2.12.5
-# Modified: 2026-05-14
+# Version:  v2.12.6
+# Modified: 2026-08-01
 #
 # be_rcon.py: unofficial BattlEye RCon (UDP) client. cmd / shell / listen modes.
 # Upstream: https://github.com/bearmeister/be-rcon
@@ -18,15 +18,15 @@ Packet layout:
   CRC32 covers everything from 0xFF onward.
 
 Types:
-  0x00  login     client→server: password; server→client: 0x00=fail 0x01=ok
-  0x01  command   client→server: seq(1)+cmd; server→client: seq(1)+data
+  0x00  login     client->server: password; server->client: 0x00=fail 0x01=ok
+  0x01  command   client->server: seq(1)+cmd; server->client: seq(1)+data
                   multi-part:    seq(1)+0x00+total(1)+idx(1)+data
-  0x02  message   server→client: seq(1)+text; client ACKs with seq(1)
+  0x02  message   server->client: seq(1)+text; client ACKs with seq(1)
 """
 
 from __future__ import annotations
 
-import readline  # noqa: F401: enables line editing in shell mode
+import readline  # noqa: F401 - enables line editing in shell mode
 import socket
 import struct
 import sys
@@ -73,7 +73,7 @@ class RConClient:
 
     Not thread-safe: `_seq` is a plain read-modify-write counter shared by
     `send_command` and `listen`'s keepalive. Do not share a single client
-    across threads: instantiate one per thread.
+    across threads - instantiate one per thread.
     """
 
     def __init__(self, host: str, port: int, password: str, timeout: float = 5.0) -> None:
@@ -109,10 +109,10 @@ class RConClient:
         self.close()
 
     def _require_sock(self) -> socket.socket:
-        """Return the live socket or raise: replaces `assert` for `-O` safety."""
+        """Return the live socket or raise - replaces `assert` for `-O` safety."""
         if self._sock is None:
             raise RuntimeError(
-                "RConClient not connected: call connect() or use as context manager"
+                "RConClient not connected - call connect() or use as context manager"
             )
         return self._sock
 
@@ -128,7 +128,7 @@ class RConClient:
         if ptype != 0x00 or not payload:
             raise ConnectionError("unexpected login response")
         if payload[0] != 0x01:
-            raise ConnectionError("login failed: wrong password?")
+            raise ConnectionError("login failed - wrong password?")
 
     # -- commands ------------------------------------------------------------
 
@@ -162,7 +162,7 @@ class RConClient:
                 continue
 
             if ptype == 0x02:
-                # server broadcast during command: ACK and discard
+                # server broadcast during command - ACK and discard
                 if payload:
                     self._ack(payload[0])
                 continue

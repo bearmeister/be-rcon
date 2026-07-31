@@ -1,6 +1,6 @@
 # Author:   Bushy <contact@bushy.dev>
-# Version:  v2.12.5
-# Modified: 2026-05-14
+# Version:  v2.12.6
+# Modified: 2026-08-01
 #
 # test_be_rcon.py: tests for be_rcon.
 
@@ -116,7 +116,7 @@ class TestParse:
 
 
 # ---------------------------------------------------------------------------
-# RConClient — helpers
+# RConClient - helpers
 # ---------------------------------------------------------------------------
 
 def _mock_sock(recv_responses: list) -> MagicMock:
@@ -202,7 +202,7 @@ class TestContextManager:
         rc.close()  # must not raise
 
     def test_send_command_without_connect_raises_runtime_error(self):
-        # Replaces the bare `assert self._sock` — assert is stripped under
+        # Replaces the bare `assert self._sock` - assert is stripped under
         # `python -O`, so distribution code must raise a real exception.
         rc = RConClient("127.0.0.1", 2305, "pass")
         with pytest.raises(RuntimeError, match="not connected"):
@@ -398,7 +398,7 @@ class TestListen:
 
 
 # ---------------------------------------------------------------------------
-# main() — console-script entry point
+# main() - console-script entry point
 # ---------------------------------------------------------------------------
 
 class TestMain:
@@ -425,7 +425,7 @@ class TestMain:
     @patch("be_rcon.cli_cmd")
     @patch("be_rcon.sys")
     def test_argv_none_falls_back_to_sys_argv(self, mock_sys, mock_cli_cmd):
-        # `main(None)` must use sys.argv[1:] — verifies console-script path
+        # `main(None)` must use sys.argv[1:] - verifies console-script path
         # (no argv passed when invoked as `be-rcon ...` from a shell).
         mock_sys.argv = ["be-rcon", "cmd", "host", "2305", "pw", "ping"]
         main()
