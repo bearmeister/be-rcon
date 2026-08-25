@@ -1,6 +1,6 @@
 # Author:   Bushy <contact@bushy.dev>
 # Version:  v2.12.6
-# Modified: 2026-08-01
+# Modified: 2026-05-28
 #
 # test_be_rcon.py: tests for be_rcon.
 
